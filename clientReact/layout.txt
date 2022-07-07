@@ -1,0 +1,5 @@
+Navigation Routes: Home, File System, Code Base, Database
+
+Home - Description of what the website contains.
+
+File System - displays and routes to folders and files in directory

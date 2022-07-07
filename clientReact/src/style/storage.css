@@ -1,0 +1,24 @@
+
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 90vh;
+    
+}
+
+.directories {
+    height: 100%;
+    padding: 0.1em;
+}
+
+.storage-viewer {
+    height: 100%;
+}
+
+.image-view {
+    width :100%;
+}
+
+.storage-container {
+    min-height: 100%;
+}

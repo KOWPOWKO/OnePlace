@@ -1,0 +1,13 @@
+.navigation {
+    display: flex;
+    list-style: none;
+}
+
+.navigation > li {
+    margin: 0.5em;
+    background: yellow;
+}
+
+a {
+    text-decoration: none;
+}
