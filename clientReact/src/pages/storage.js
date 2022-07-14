@@ -21,7 +21,7 @@ export const Storage = () => {
       'extension': extension
     } 
     
-    return fetch('http://192.168.1.11:5000/content', {
+    return fetch('/content', {
       method: 'POST',
       mode:'cors',
       headers: {
@@ -42,7 +42,7 @@ export const Storage = () => {
 
     const sendLocation = {urlLocation: location};
 
-    fetch('http://192.168.1.11:5000/storage', {
+    fetch('/storage', {
       method: 'POST',
       mode:'cors',
       headers: {
@@ -61,8 +61,9 @@ export const Storage = () => {
   return (
     
     <div className='storage-container'>
-      <FileUpload file='http://192.168.1.11:5000/upload'/>
+      <div className='storage-navigator-1'></div>
       <div className='two-column-layout'>
+        <div className='storage-navigator-2'></div>
         <div className='directories'>
           <DirectoryContent files={files} action={readFile} location={location}/>
         </div>
@@ -72,7 +73,7 @@ export const Storage = () => {
         }
         </div>
       </div>
-
+      <FileUpload file='/upload'/>
 
 
       

@@ -9,10 +9,11 @@ const busboy = require('busboy');
 
 const storage = require('./routes/storage');
 const upload = require('./routes/upload');
+const extension = require('../../util');
 
 app.use(
   cors({
-    origin: ["http://localhost:3000","http://192.168.1.11:3000"],
+    origin: ["http://localhost:3000/","http://192.168.1.11:3000","*"],
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -25,7 +26,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 const storageDirectorty = path.join(__dirname,'..','..','storage');
 app.use(express.static(storageDirectorty));
 
-storage.calls(app,fs,path,cors);
+storage.calls(app,fs,path,extension);
 upload.calls(app,fs,busboy,path,storageDirectorty)
 
 app.listen(5000, () => console.log('Server Started...'))

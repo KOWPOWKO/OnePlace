@@ -1,24 +1,47 @@
+.storage-container {
+    height: 95.7vh;
+}
 
 .two-column-layout {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    height: 90vh;
+    grid-template-columns: 1fr 4fr 2fr;
+    height: 80%;
+
     
+}
+
+.storage-navigator-1 {
+    height: 10%;
 }
 
 .directories {
     height: 100%;
-    padding: 0.1em;
+    background-color: grey;
+    padding: 1em;
 }
 
 .storage-viewer {
     height: 100%;
 }
 
-.image-view {
-    width :100%;
+
+.directories>table {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 60%;
+    text-align: left;
+    width: 100%;
 }
 
-.storage-container {
-    min-height: 100%;
+
+
+.image-view {
+    width :100%;
+    vertical-align: center;
+}
+
+
+
+.file-uploader {
+    height: 10%;
+    background-color: antiquewhite;
 }

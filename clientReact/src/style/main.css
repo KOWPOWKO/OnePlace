@@ -1,4 +1,30 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
+
+  th {
+    border-right: 1px solid black;
+    padding-right: 1em;
+    padding-left: 0.2em;
+  }
+
+
+  .last-table-head {
+    border-right: 0px;
+  }
+  td {
+    padding-left: 0.2em;
+    padding-right: 1em;
+    border-bottom: 1px solid black;
+}
+div {
+  outline: 1px solid black;
+  
+
+}
+.padding-div {
+  height:1em;
+  outline: 0px;
+}

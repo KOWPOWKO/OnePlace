@@ -1,3 +1,4 @@
+
 const hrefMap = {
     //Default will regular text reader
     //Image
@@ -20,7 +21,7 @@ const hrefMap = {
 };
 
 
-module.exports.calls = function (app,fs,path,cors) {
+module.exports.calls = function (app,fs,path,extension) {
 
     app.post('/content', function(req,res) {
         const body = req.body;    
@@ -44,18 +45,45 @@ module.exports.calls = function (app,fs,path,cors) {
     });
     
     app.post('/storage', function(req,res) {
-        const location = req.body.urlLocation;
-        fs.readdir(path.join(__dirname,'..','..','..',location.pathname),{ withFileTypes: true },(err,files) => {
+        const location = path.join(__dirname,'..','..','..',req.body.urlLocation.pathname);
+        fs.readdir(location,{ withFileTypes: true },(err,files) => {
             const directory = files.filter(files => files.isDirectory()).map(files => files.name);
-            
             const file = files.filter(files => files.isFile()).map(files => files.name);
+            const fileStats = folderStat(file,location);
+            const directoryStats = folderStat(directory,location);
+            console.log(file);
+
+
             const data = {
-                'directories': directory,
-                'files': file
+                'directories': directoryStats,
+                'files': fileStats
             };
             res.send(data);
         })
       
     });
+
+    const folderStat = (fileObject,location) => {
+        var fileStats = [];
+        fileObject.forEach(element => {
+            
+            try {
+                const fileLocation=  path.join(location,element);
+                const data = fs.statSync(fileLocation);
+                fileStats.push({
+                    name: element,
+                    path: fileLocation,
+                    size: (data.isDirectory()? "":data.size),
+                    type: (data.isDirectory()? "Folder":extension.ext(element)),
+                    created: extension.formatDate(data.birthtime,"MM/dd/yyyy hh:mmt"),
+                    accessed: extension.formatDate(data.atime,"MM/dd/yyyy hh:mmt"),
+                    modified: extension.formatDate(data.mtime,"MM/dd/yyyy hh:mmt")
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        });
+        return fileStats;
+    }
     
 } 

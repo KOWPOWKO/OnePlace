@@ -36,7 +36,7 @@ export const FileUpload = (props) => {
     }
 
     return (
-    <div>
+    <div className="file-uploader">
         <input type="file" onChange={onInput} multiple/>
         <button onClick={onSubmit}>Upload</button>
     </div>
