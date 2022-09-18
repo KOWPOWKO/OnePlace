@@ -1,6 +1,7 @@
-import { Link} from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 export const DirectoryContent = (props) => {
 
+    const navigate = useNavigate();
     return (
     <>
         <table className='folder-content-table'>
@@ -18,7 +19,7 @@ export const DirectoryContent = (props) => {
                 {
                 props.files.directories.map((fileObject,i) => {
                     return (
-                    <tr className='directory-row-content' key = {fileObject.name} onClick={(e) => props.action(fileObject.name,props.location)} >
+                    <tr className='directory-row-content' key = {fileObject.name} onClick={(e) => navigate(fileObject.name)} >
                         <td>{fileObject.name}</td>
                         <td>{fileObject.type}</td>
                         <td>{fileObject.size}</td>

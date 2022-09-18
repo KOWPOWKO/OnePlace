@@ -20,6 +20,7 @@ export const Storage = () => {
       'file': file,
       'extension': extension
     } 
+  
     
     return fetch('/content', {
       method: 'POST',
